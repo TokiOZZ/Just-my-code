@@ -1,0 +1,316 @@
+*{
+	box-sizing: border-box; /* 
+							важно для правильного расчета размеров элементов
+							*/
+}
+a{
+	text-decoration: none; /* 
+							убираем подчеркивание для всех ссылок
+							*/
+	display: inline-block; /* 
+							делаем все ссылки строчно-блочными
+							*/
+}
+ul,
+li{
+	list-style: none; /* 
+					отключаем маркеры у всех ul
+					*/
+	margin: 0; /* 
+				убираем все отступы
+				*/
+	padding: 0;
+}
+.container{
+	max-width: 1170px; /* 
+						убираем "самое ужасное в верстке - нижний скролл" для экранов меньше 1170px
+						*/
+	margin: 0 auto; /* 
+					центрируем контейнер 
+					*/
+	padding: 0 15px; /* 
+					резервируем отступ по краям, чтобы на экранах меньше 1170px, содержимое не "прилипало к стенкам"
+					*/
+
+}
+
+
+body{
+	font-family: 'PT Serif', serif;
+	font-weight: 400; /*
+						размер регулярного шрифта для всего документа
+						*/
+	font-size: 14px;    /* 
+						наиболее часто встречающиеся на странице размер шрифта и высота строки
+						*/
+	line-height: 18px;
+	color: #5e5e5e;
+}
+header{
+	font-family: 'Roboto', sans-serif;
+}
+.header__top{
+	background-color: #303030;
+	}
+.header__btn{
+	float: right; /* 
+					можно и флексами, но не все браузеры их поддерживают
+					*/
+	line-height: 36px;
+	font-size: 16px;
+	color: #1b1b1b;
+	background-color: #ffc222;
+	padding: 5px 20px 4px 50px; /*
+								паддингами сверху и снизу компенсировали разницу между высотой строки контейнера и кнопки
+								*/
+	display: block;
+	position: relative;
+}
+.header__btn:before{
+	 font-family: 'icomoon';
+	 content: "\f0b1";
+	 position: absolute;
+	 left: 22px;
+	 color: #1b1b1b
+}
+.header__contacts:after{ /* 
+						мулька с решением проблемы флоата, которую я пока не понял.
+						Предлагают задавать такое решение для родителя каждый раз, когда его ребенка отправили во флоат
+						*/
+	content: "";
+	clear: both;
+	display: block;
+}
+.header__phone,
+.header__email{
+	color: #cbcacb;
+	letter-spacing: 0.25px;
+	position: relative;
+	line-height: 45px;
+}
+.header__phone{
+	padding-left: 20px;
+	padding-right: 30px;
+}
+.header__phone:before{
+	font-family: 'icomoon';
+	content: "\f095";
+	position: absolute;
+	left: 0; /*
+			в сочетании позишн рилейтив + позишн абсолют прибиваем контент к левой стороне
+			*/
+	color: #ffc222;
+}
+.header__email{
+	padding-left: 24px;
+}
+.header__email:before{
+	font-family: 'icomoon';
+	content: "\f003";
+	color: #ffc222;
+	position: absolute;
+	left: 0;
+	}
+.header__content{
+	padding: 34px 0 23px;
+}
+.header__content-inner{
+	display: flex;
+	justify-content: space-between;
+}
+.menu li{
+	display: inline-block;
+}
+.menu a{
+	color: #323232;
+	font-size: 16px;
+	line-height: 36px;
+	border: 1px solid transparent; /* 
+									transparent - зарезервировали место под бордер при наведении 
+									*/
+	padding: 0px 16px;
+	transition: all .3s;
+}
+.menu a:hover{ /* при наведении */
+	border-color: #ffc222; 
+
+}
+.menu li + li{
+	padding-left: 10px; /* 
+						паддинги слева для всех лишек, кроме первой
+						*/
+}
+#modal {
+	display: none;
+}
+.slider {
+	background-image: url(../img/slider-fon.jpg);
+	background-repeat: no-repeat;/*
+									чтобы картинка фона не размножалась
+									*/
+	background-size: cover; /*
+							растягиваем картинку фона
+							*/
+	background-position: center;
+	min-height: 500px; /*
+						чтобы картинка фона растягивалась при увеличении контента в слайдере
+						*/
+}
+
+.slider__item-content {
+	text-align: center;
+	padding-top: 110px;
+	max-width: 665px;
+	margin: 0 auto;
+}
+.slider__title {
+	text-transform: uppercase;
+	font-size: 30px;
+	line-height: 36px;
+	color: #ffff;
+	font-weight: 500;
+	letter-spacing: 1.5px;
+	margin-bottom: 22px;
+	font-family: 'Roboto', sans-serif;
+
+}
+.slider__text{
+	line-height: 24px;
+	font-size: 18px;
+	color: #d3d2d2;
+	margin-bottom: 50px;
+
+}
+.default-btn{
+	display: inline-block;
+	font-size: 14px;
+	line-height: 24px;
+	color: #fff;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	padding: 8px 30px 8px 24px;
+	border: 1px solid #ffc222;
+	border-right-width: 20px;
+	position: relative;
+	z-index: 2;
+	outline: none;
+}
+.default-btn:after{
+	content: "\f105";
+	font-family: 'icomoon';
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: -12px;
+}
+.slider__inner{
+	position: relative;
+}
+.slick-btn{
+position: absolute;
+top: 70%; 
+z-index: 3;
+width: 40px;
+height: 40px;
+border: 1px solid fff;
+background-color: #ffc222;
+cursor: pointer; /* рука вместо курсора*/
+outline: none;
+}
+.slick-btn.slick-disabled{
+	cursor: default;
+	background-color: transparent;
+}
+.slick-btn:before{
+	content: "";
+	position: absolute;
+	top: 50%:
+	left50%;
+	transform: translate(-50%, -50%);
+	font-family: 'icomoon';
+	color: #fff;
+
+}
+.slick-next:before{
+	content: "\f105";
+}
+.slick-next{
+	right: 0;
+}
+.slick-prev:before{
+	content: "\f104";
+}
+.slick-prev{
+	left: 0;
+
+}
+.about{
+	padding: 50px 0px 30px;
+}
+.about__top{
+	margin-bottom: 60px;
+	display: flex;
+	justify-content: space-between;
+}
+.about__title-box{
+	max-width: 520px;
+	padding-left: 140px;
+	position: relative;
+}
+.about__title-box:before{
+	content: "";
+	position: absolute;
+	width: 100px;
+	height: 2px;
+	background-color: #ffc222;
+	left: 0;
+	top: 11px;
+}
+.about__title{
+	font-size: 24px;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	line-height: 24px;
+	color: #212020;
+	margin-bottom: 10px;
+}
+.about__text{
+	letter-spacing: .1px;
+}
+.about__btn a{
+	color: #373636;
+	line-height: 24px;
+	letter-spacing: .25px;
+	padding: 5px 38px;
+	border: 3px solid #e6e6e6;
+}
+.about__items{
+	display: flex;
+	justify-content: space-between;
+}
+.about__item{
+	max-width: 360px;
+	text-align: center;
+	padding: 30px 0 80px;
+	position: relative;
+	min-height: 375px;
+	background-color: #ccc;
+
+}
+.about__item-title{
+	color: #212020:
+	font-size18px;
+	line-height: 24px;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	padding: 24px 0;
+}
+.about__item-text{
+	letter-spacing: .1px;
+	padding: 0 30px 30px;
+	
+}
+.about__item-btn{
+	position: absolute;
+	bottom: 40px;
+}
